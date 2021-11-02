@@ -1,0 +1,23 @@
+.one_day_sheduler {
+    width: 300px;
+    display: grid;
+    grid-template-columns: 3fr 5fr;
+    align-content: center;
+}
+
+.buttons {
+    margin: 5px 10px 5px 10px;
+}
+
+.bordered {
+    align-content: center;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.all_sheduler {
+    width: 1050px;
+    display: grid;
+    grid-template-columns: 3fr repeat(5, 5fr);
+    align-content: center;
+}
