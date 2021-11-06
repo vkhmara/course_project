@@ -9,7 +9,7 @@ let days = {
 let weekdays = Object.keys(days);
 let current_weekday_num = -1;
 
-let sheduler = document.getElementById('sheduler');
+let timetable = document.getElementById('timetable');
 
 let buttons_panel = document.getElementById('weekday_buttons')
 for (let weekday = 0; weekday < weekdays.length; weekday++) {
@@ -26,10 +26,10 @@ append_child('button',
     'Все дни',
     buttons_panel,
     {
-        'onclick': display_all_sheduler
+        'onclick': display_all_timetable
     });
 
-function append_child(tag_name, class_name, text, parent = sheduler, styles = {}) {
+function append_child(tag_name, class_name, text, parent = timetable, styles = {}) {
     let el = document.createElement(tag_name);
     el.className = class_name;
     el.textContent = text;
@@ -41,9 +41,9 @@ function append_child(tag_name, class_name, text, parent = sheduler, styles = {}
 
 function change_weekday(current_weekday_num) {
     current_weekday = weekdays[current_weekday_num];
-    sheduler.textContent = '';
-    sheduler.className = 'one_day_sheduler';
-    sheduler.appendChild(document.createElement('div'));
+    timetable.textContent = '';
+    timetable.className = 'one_day_timetable';
+    timetable.appendChild(document.createElement('div'));
 
     append_child('div', 'bordered', current_weekday)
 
@@ -53,11 +53,11 @@ function change_weekday(current_weekday_num) {
     }
 }
 
-function display_all_sheduler() {
-    sheduler.textContent = '';
-    sheduler.className = 'all_sheduler';
+function display_all_timetable() {
+    timetable.textContent = '';
+    timetable.className = 'all_timetable';
 
-    sheduler.appendChild(document.createElement('div'));
+    timetable.appendChild(document.createElement('div'));
 
     weekdays.forEach(weekday => {
         append_child(

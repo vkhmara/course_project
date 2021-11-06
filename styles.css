@@ -1,4 +1,4 @@
-.one_day_sheduler {
+.one_day_timetable {
     width: 300px;
     display: grid;
     grid-template-columns: 3fr 5fr;
@@ -15,7 +15,7 @@
     padding: 10px;
 }
 
-.all_sheduler {
+.all_timetable {
     width: 1050px;
     display: grid;
     grid-template-columns: 3fr repeat(5, 5fr);
