@@ -1,12 +1,14 @@
 .one_day_timetable {
-    width: 300px;
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 320px;
     display: grid;
     grid-template-columns: 3fr 5fr;
     align-content: center;
 }
 
 .buttons {
-    margin: 5px 10px 5px 10px;
+    margin: 10px 10px 5px 10px;
 }
 
 .bordered {
@@ -16,7 +18,9 @@
 }
 
 .all_timetable {
-    width: 1050px;
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 1120px;
     display: grid;
     grid-template-columns: 3fr repeat(5, 5fr);
     align-content: center;
