@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -20,67 +19,58 @@ let days = {
   'Пятница': ['ДГИ(п)', 'МДиСУБД(л)', '', 'МДиСУБД(п)']
 };
 let weekdays = Object.keys(days);
-let current_weekday = -1;
 let timetable = document.getElementById('timetable');
 
-function append_child(tag_name, class_name, text, parent = timetable) {
-  let el = document.createElement(tag_name);
-  el.className = class_name;
-  el.textContent = text;
-  parent.appendChild(el);
-}
-
 function change_weekday(current_weekday_num) {
-  current_weekday = weekdays[current_weekday_num];
-  timetable.textContent = '';
-  timetable.className = 'one_day_timetable';
-  timetable.appendChild(document.createElement('div'));
-
-  append_child('div', 'bordered', current_weekday)
-
-  for (let index = 0; index < times.length; index++) {
-      append_child('div', 'bordered', times[index]);
-      append_child('div', 'bordered', days[current_weekday][index]);
-  }
+  let current_weekday = weekdays[current_weekday_num];
+  let pairs = days[current_weekday];
+  ReactDOM.render(
+    <div class="one_day_timetable">
+      <div></div>
+      <div class="bordered">{current_weekday}</div>
+      {[0, 1, 2, 3, 4, 5, 6, 7].map((i) =>
+        <div class="bordered">
+          {(i % 2 == 0 ? times : pairs)[Math.floor(i / 2)]}
+        </div>
+      )}
+    </div>,
+    timetable
+  );
 }
 
 function display_all_timetable() {
-  timetable.textContent = '';
-  timetable.className = 'all_timetable';
-
-  timetable.appendChild(document.createElement('div'));
-
-  weekdays.forEach(weekday => {
-      append_child(
-          'div',
-          'bordered',
-          weekday
-      )
+  
+  let elems = [];
+  times.map((time, i) => {
+    elems.push(time);
+    weekdays.map((day) => {
+      elems.push(days[day][i])
+    });
   });
 
-  times.forEach((time, i) => {
-      append_child(
-          'div',
-          'bordered',
-          time
-      );
-      weekdays.forEach(weekday => {
-          append_child(
-              'div',
-              'bordered',
-              days[weekday][i]
-          );  
-      });
-  });
+  ReactDOM.render(
+    <div class="all_timetable">
+      <div></div>
+      {
+        weekdays.map((day) =>
+          <div class="bordered">{day}</div>
+        )
+      }
+      {
+        elems.map(elem =>
+          <div class="bordered">{elem}</div>
+        )
+      }
+    </div>,
+    timetable
+  );
 }
 
+// add listener to buttons
 for (let i = 0; i < 5; i++) {
-  document.getElementById(String(i + 1)).onclick = () => change_weekday(i); 
+  document.getElementById(String(i + 1)).onclick = () => change_weekday(i);
 }
 document.getElementById("6").onclick = display_all_timetable;
 
+// set the start day as monday
 change_weekday(0);
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

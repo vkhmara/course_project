@@ -24,17 +24,7 @@ function App() {
         Все дни
       </button>
     </div>
-    <div class="one_day_timetable" id="timetable">
-      <div class></div>
-      <div class="bordered">Понедельник</div>
-      <div class="bordered">14:30 - 15:50</div>
-      <div class="bordered">MaтМод(п)</div>
-      <div class="bordered">16:00 - 17:20</div>
-      <div class="bordered">МатМод(л)</div>
-      <div class="bordered">17:30 - 18:50</div>
-      <div class="bordered">ДС_Р(п)</div>
-      <div class="bordered">19:00 - 20:20</div>
-      <div class="bordered">ДС_Т(п)</div>
+    <div id="timetable">
     </div>
   </div>);
 }
